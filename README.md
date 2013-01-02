@@ -67,8 +67,7 @@ further details.
 
 ## Todo
 
-* resolve test
+* inline resolve tests
 * embed test
-* multiple depth test
 * Invert name <> target
 * Handle Url + Link case
