@@ -46,6 +46,9 @@ describe 'WHEN resolving stuff', ->
       username: 'username'
       password: 'password'
       email: 'email' 
+    scopes:
+      inline:
+        fields: ['id','username']
 
   apiFacade.registerResolver new ResolverUsers
 
@@ -57,8 +60,8 @@ describe 'WHEN resolving stuff', ->
       jsonObj.should.have.property 'createdBy'
       jsonObj.createdBy.should.have.property 'id'
       jsonObj.createdBy.should.have.property 'username'
-      jsonObj.createdBy.should.have.property 'password'
-      jsonObj.createdBy.should.have.property 'email'
+      jsonObj.createdBy.should.not.have.property 'password'
+      jsonObj.createdBy.should.not.have.property 'email'
       #jsonObj.createdBy.should.not.have.property 'actorId'
       done null
 
