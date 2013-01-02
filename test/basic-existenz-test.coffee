@@ -1,4 +1,3 @@
-assert = require 'assert'
 should = require 'should'
 
 describe 'WHEN loading the module', ->
