@@ -46,9 +46,12 @@ module.exports = class ApiFacadeClient
     return mappings unless filterScopes && _.keys(filterScopes).length > 0
 
     finalFields = {}
-    for scopeKey,filterValue of filterScopes
-      if _.contains(options.scopes,scopeKey)
-        finalFields[scope] = true for scope in (filterValue.fields || {})
+    for scopeKey,scopeValue of filterScopes when _.contains(options.scopes,scopeKey) && scopeValue.mode isnt 'restrict'
+      finalFields[scope] = true for scope in (scopeValue.fields || {})
+
+    for scopeKey,scopeValue of filterScopes when _.contains(options.scopes,scopeKey) &&  scopeValue.mode is 'restrict'
+      for k of finalFields
+        delete finalFields[k] if not _.contains( scopeValue.fields,k)
 
     resultMappings = {}
     for key,v of mappings when finalFields[key]
