@@ -67,7 +67,8 @@ further details.
 
 ## Todo
 
-* inline resolve tests
 * embed test
+* embed + resolve test
 * Invert name <> target
+* t12 should work without resolve = true
 * Handle Url + Link case

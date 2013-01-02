@@ -112,12 +112,17 @@ module.exports = class ApiFacadeClient
                 v = [v] unless _.isArray(v)
                 v = _.map v, (x) =>
                   return @mapObjectSync(mappingTarget.type,x,options,null)
-                  
+                
+                #for xx in v
+                #  resolver.add mappingTarget.type,xx.id,xx,false if resolver && xx.id
                 # TODO: Add url here too, add to resolver if necessary
               else
                 v = _.first(v) if _.isArray(v)
                 if v
+                  #resolveId = v.id
                   v = @mapObjectSync(mappingTarget.type,v,options,null)
+                  #console.log "HERE XXX: #{resolveId}"
+                  #resolver.add mappingTarget.type,resolveId,v,false if resolver && v.id
                     # TODO: Add url here too, add to resolver if necessary
                 else
                   v = null

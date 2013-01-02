@@ -4,6 +4,7 @@ _ = require 'underscore'
 model = ->
   targetId : "id001"
 
+
 module.exports = class ResolverUsers
   constructor: () ->
     # Ususally have a link to persistent store here.
@@ -34,8 +35,8 @@ describe 'WHEN resolving stuff', ->
       targetId: 
         name : 'target'
         type: 'User'
+        embed : true
         resolve: true
-        embed : false
 
   apiFacade.addSchema "User", 
     mappings:
@@ -43,23 +44,28 @@ describe 'WHEN resolving stuff', ->
       username: 'username'
       password: 'password'
       email: 'email' 
-    scopes:
-      inline:
-        fields: ['id','username']
 
   apiFacade.registerResolver new ResolverUsers
 
 
   it 'IT should transform values', (done) ->
     apiFacade.mapRoot 'TypeA', model(), {}, (err,jsonObj) ->
+      console.log "I GOT: #{JSON.stringify(jsonObj)}"
       should.not.exist err
       should.exist jsonObj
-      jsonObj.should.not.have.property 'targetId'
       jsonObj.should.have.property 'target'
       jsonObj.target.should.have.property 'id'
       jsonObj.target.should.have.property 'username'
-      jsonObj.target.should.not.have.property 'password'
-      jsonObj.target.should.not.have.property 'email'
+      jsonObj.target.should.have.property 'password'
+      jsonObj.target.should.have.property 'email'
+
+      jsonObj.should.have.property '_embedded'
+      jsonObj._embedded.should.have.property 'users'
+      jsonObj._embedded.users.should.have.property 'id001'
+      jsonObj._embedded.users.id001.should.have.property 'id'
+      jsonObj._embedded.users.id001.should.have.property 'username'
+      jsonObj._embedded.users.id001.should.have.property 'password'
+      jsonObj._embedded.users.id001.should.have.property 'email'
       done null
 
 
