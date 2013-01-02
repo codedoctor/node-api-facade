@@ -1,0 +1,47 @@
+{
+  "author": "Martin Wawrusch <martin@wawrusch.com> (http://martinatsunset.com)",
+  "name": "api-facade",
+  "description": "A library that simplifies the exposure of data through REST interfaces in a secure, scope dependent way. Basically transforms internal data into whatever a client of your API has the right to see.",
+  "version": "0.2.0",
+  "main" : "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/codedoctor/node-api-facade.git"
+  },
+  "bin" : {
+  },
+  "directories" : {
+    "lib" : "./lib",
+    "test" : "./test"
+  },
+  "keywords" : [
+    "mongoose","tags"
+  ],
+  "scripts": {
+    "prepublish" : "coffee -c -o lib src",
+    "watch" : "coffee -c -w  -o lib src",
+    "test": "coffee -c -o lib src;NODE_ENV=test node_modules/.bin/mocha --timeout 10000 -R spec test/*.coffee",
+    "docs": "node_modules/.bin/codo -i ./src -o ./doc"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "dependencies": {
+    "async": "0.1.22",
+    "underscore" : ">=1.4.3",
+    "some-errors": "0.2.0"
+  },
+  "devDependencies": {
+    "coffee-script": "1.4.0",
+    "should": "1.2.1",
+    "mocha": "1.6.0",
+    "codo" : "1.5.4"
+  },
+  "bugs": { "url": "http://github.com/codedoctor/node-api-facade/issues" },
+  "licenses": [
+    { "type": "MIT",
+      "url": "http://github.com/codedoctor/node-api-facade/raw/master/LICENSE"
+    }
+  ]
+  
+}

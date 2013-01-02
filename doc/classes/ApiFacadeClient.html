@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset='UTF-8'>
+  <title>CoffeeScript API Documentation</title>
+  <link rel='stylesheet' href='..&#47;assets/codo.css' type='text/css'>
+  <script src='..&#47;assets/codo.js'></script>
+  <script src='..&#47;assets/search_data.js'></script>
+</head>
+  <body>
+    <div id='base' data-path='..&#47;'></div>
+<div id='header'>
+  <div id='menu'>
+    <a href='..&#47;README.md.html' title='Node-api-facade'>Node-api-facade</a>
+    &raquo;
+    <a href='..&#47;class_index.html' title='Index'>Index</a>
+    &raquo;
+    <span class='title'>ApiFacadeClient</span>
+    <nav>
+      <ul>
+        <li class='noframes'>
+          (<a class='noframes' href='#'>no frames</a>)
+        </li>
+      </ul>
+    </nav>
+    <div id='search'>
+      <a id='class_list_link' href='..&#47;class_list.html'>Classes</a>
+      <a id='method_list_link' href='..&#47;method_list.html'>Methods</a>
+      <a id='extra_list_link' href='..&#47;extra_list.html'>Extras</a>
+    </div>
+  </div>
+  <iframe id='search_frame'></iframe>
+  <div id='fuzzySearch'>
+    <input type='text'>
+    <ol></ol>
+  </div>
+  <div id='help'>
+    <p>
+      Quickly fuzzy find classes, mixins, methods, file:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-T</span>
+        Open fuzzy finder dialog
+      </li>
+    </ul>
+    <p>
+      In frame mode you can toggle the list naviation frame on the left side:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-L</span>
+        Toggle list view
+      </li>
+    </ul>
+    <p>
+      You can focus a list in frame mode or toggle a tab in frameless mode:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-C</span>
+        Class list
+      </li>
+      <li>
+        <span>Ctrl-I</span>
+        Mixin list
+      </li>
+      <li>
+        <span>Ctrl-F</span>
+        File list
+      </li>
+      <li>
+        <span>Ctrl-M</span>
+        Method list
+      </li>
+      <li>
+        <span>Ctrl-E</span>
+        Extras list
+      </li>
+    </ul>
+    <p>
+      You can focus and blur the search input:
+    </p>
+    <ul>
+      <li>
+        <span>Ctrl-S</span>
+        Focus search input
+      </li>
+      <li>
+        <span>Esc</span>
+        Blur search input
+      </li>
+    </ul>
+    <p>
+      In frameless mode you can close the list tab:
+    </p>
+    <ul>
+      <li>
+        <span>Esc</span>
+        Close list tab
+      </li>
+    </ul>
+  </div>
+</div>
+    <div id='content'>
+      <h1>
+        Class:
+        ApiFacadeClient
+      </h1>
+      <table class='box'>
+        <tr>
+          <td>Defined in:</td>
+          <td>src&#47;api-facade-client.coffee</td>
+        </tr>
+      </table>
+      <h2>Instance Method Summary</h2>
+      <ul class='summary'>
+  <li>
+    <span class='signature'>
+      <a href='#constructor-instance'>
+        - (void) <strong>constructor</strong>(settings = {})
+      </a>
+    </span>
+    <span class='constructor note title'>Constructor</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#normalizeName-instance'>
+        - (void) <strong>normalizeName</strong>(name)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#registerResolver-instance'>
+        - (void) <strong>registerResolver</strong>(resolver)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#addSchema-instance'>
+        - (void) <strong>addSchema</strong>(kind, schema = {})
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#resolveSchema-instance'>
+        - (void) <strong>resolveSchema</strong>(kind, options = {})
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Returns the schema for a type.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#mappingsFromSchema-instance'>
+        - (void) <strong>mappingsFromSchema</strong>(schema, options = {})
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Returns the mapping for a schema.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#_isCollectionTypeList-instance'>
+        - (void) <strong>_isCollectionTypeList</strong>(collectionType = '')
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#_isCollectionTypeArray-instance'>
+        - (void) <strong>_isCollectionTypeArray</strong>(collectionType = '')
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#_isCollectionTypeListOrArray-instance'>
+        - (void) <strong>_isCollectionTypeListOrArray</strong>(collectionType)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#_handleSingleMapping-instance'>
+        - (void) <strong>_handleSingleMapping</strong>(sourceKey, mappingTarget, source, result, resolver, options = {})
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#mapObjectSync-instance'>
+        - (void) <strong>mapObjectSync</strong>(kind, obj, options = {}, resolver)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      Maps an object, whose type is specified by kind, to a REST representation This method excepts null values for obj, and returns null values as a result.
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#mapRootCollection-instance'>
+        - (void) <strong>mapRootCollection</strong>(kind, pagedResult = {}, options = {}, cb)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+  <li>
+    <span class='signature'>
+      <a href='#mapRoot-instance'>
+        - (void) <strong>mapRoot</strong>(kind, item = {}, options = {}, cb)
+      </a>
+    </span>
+    <span class='bound note title'>Bound</span>
+    <span class='desc'>
+      
+    </span>
+  </li>
+</ul>
+      <h2>Constructor Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='constructor-instance'>
+      - (void) <strong>constructor</strong>(settings = {})
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+</div>
+      <h2>Instance Method Details</h2>
+      <div class='methods'>
+  <div class='method_details'>
+    <p class='signature' id='normalizeName-instance'>
+      - (void) <strong>normalizeName</strong>(name)
+      (bound)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='registerResolver-instance'>
+      - (void) <strong>registerResolver</strong>(resolver)
+      (bound)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='addSchema-instance'>
+      - (void) <strong>addSchema</strong>(kind, schema = {})
+      (bound)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='resolveSchema-instance'>
+      - (void) <strong>resolveSchema</strong>(kind, options = {})
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Returns the schema for a type. </p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='mappingsFromSchema-instance'>
+      - (void) <strong>mappingsFromSchema</strong>(schema, options = {})
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Returns the mapping for a schema. Looks for options.scopes</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='_isCollectionTypeList-instance'>
+      - (void) <strong>_isCollectionTypeList</strong>(collectionType = '')
+      (bound)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='_isCollectionTypeArray-instance'>
+      - (void) <strong>_isCollectionTypeArray</strong>(collectionType = '')
+      (bound)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='_isCollectionTypeListOrArray-instance'>
+      - (void) <strong>_isCollectionTypeListOrArray</strong>(collectionType)
+      (bound)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='_handleSingleMapping-instance'>
+      - (void) <strong>_handleSingleMapping</strong>(sourceKey, mappingTarget, source, result, resolver, options = {})
+      (bound)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='mapObjectSync-instance'>
+      - (void) <strong>mapObjectSync</strong>(kind, obj, options = {}, resolver)
+      (bound)
+    </p>
+    <div class='docstring'>
+  <p>Maps an object, whose type is specified by kind, to a REST representation
+This method excepts null values for obj, and returns null values as a result.
+Please note that resolver can be null</p>
+</div>
+<div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='mapRootCollection-instance'>
+      - (void) <strong>mapRootCollection</strong>(kind, pagedResult = {}, options = {}, cb)
+      (bound)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+  <div class='method_details'>
+    <p class='signature' id='mapRoot-instance'>
+      - (void) <strong>mapRoot</strong>(kind, item = {}, options = {}, cb)
+      (bound)
+    </p>
+    <div class='tags'>
+</div>
+  </div>
+</div>
+    </div>
+    <div id='footer'>
+  Generated on
+  Wed Jan 02 2013 10:45:20 GMT-0800 (PST)
+  by
+  <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
+  v1.5.4
+  (Node.js v0.8.15).
+  &#10034;
+  Press Ctrl-h to see the keyboard shortcuts
+  &#10034;
+  <a href='http://twitter.com/#!/netzpirat'>@netzpirat</a>
+  &#10034;
+  <a href='https://mksoft.ch'>mksoft.ch</a>
+</div>
+  </body>
+</html>
