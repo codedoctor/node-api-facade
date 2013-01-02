@@ -69,7 +69,6 @@ module.exports = class ApiFacadeClient
     @_isCollectionTypeList(collectionType) || @_isCollectionTypeArray(collectionType)
 
   _handleSingleMapping: (sourceKey,mappingTarget,source,result,resolver,options = {}) =>
-      options = {} # Temp
       if _.isString(mappingTarget)
         result[mappingTarget] = source[sourceKey]
       else if _.isObject(mappingTarget)
@@ -125,7 +124,8 @@ module.exports = class ApiFacadeClient
 
             #if resolve
             # resolve - Only means that we resolve the target type
-
+          else # No type has been specified. This means that mapping is 1 for 1, except when we have a collection type and v is NOT an array
+            v = [v] if @_isCollectionTypeListOrArray(mappingTarget.collectionType) and (not _.isArray(v))
 
         else
           ###

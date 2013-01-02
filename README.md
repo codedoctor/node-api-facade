@@ -67,7 +67,6 @@ further details.
 
 ## Todo
 
-* Test array of non type
 * scope test
 * resolve test
 * embed test
