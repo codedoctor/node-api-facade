@@ -65,4 +65,12 @@ npm publish
 Copyright (c) 2013 Martin Wawrusch See LICENSE for
 further details.
 
+## Todo
+
+* Test array of non type
+* scope test
+* resolve test
+* embed test
+* full test
+* multiple depth test
 
