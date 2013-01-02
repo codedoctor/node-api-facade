@@ -73,7 +73,7 @@ module.exports = class Resolver
             items: {} where the index into the items is the string/lowercased object id
           ###
           for id,t of (@matrix[r.kind] || {})
-            for o in t || []
+            for o in (t || []) when !!o
               if r.items[id]
                 options.scopes = ['inline']
                 _.extend o, client.mapObjectSync(r.kind,r.items[id],options,null)

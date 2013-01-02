@@ -121,7 +121,12 @@ module.exports = class ApiFacadeClient
               if @_isCollectionTypeListOrArray(mappingTarget.collectionType)
                 v = [v] unless _.isArray(v)
                 v = _.map v, (x) =>
-                  return @mapObjectSync(mappingTarget.type,x,options,null)
+                  if mappingTarget.embed && mappingTarget.type
+                    x = x # just a reminder
+                    resolver.add mappingTarget.type,x,null,true if resolver
+                    return x
+                  else
+                    return @mapObjectSync(mappingTarget.type,x,options,null)
                 
                 #for xx in v
                 #  resolver.add mappingTarget.type,xx.id,xx,false if resolver && xx.id
@@ -129,8 +134,14 @@ module.exports = class ApiFacadeClient
               else
                 v = _.first(v) if _.isArray(v)
                 if v
+                  if mappingTarget.embed && mappingTarget.type
+                    v = v # just a reminder
+                    resolver.add mappingTarget.type,v,null,true if resolver
+                  else
                   #resolveId = v.id
-                  v = @mapObjectSync(mappingTarget.type,v,options,null)
+                    v = @mapObjectSync(mappingTarget.type,v,options,null)
+                  
+
                   #console.log "HERE XXX: #{resolveId}"
                   #resolver.add mappingTarget.type,resolveId,v,false if resolver && v.id
                     # TODO: Add url here too, add to resolver if necessary

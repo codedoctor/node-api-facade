@@ -67,7 +67,6 @@ further details.
 
 ## Todo
 
-* fix bug
 * add array test case
 * Invert name <> target
 * publish to npm
