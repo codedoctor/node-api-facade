@@ -24,7 +24,6 @@ module.exports = class ApiFacadeClient
     throw new errors.UnprocessableEntity('kind') unless kind
     kind = @normalizeName kind
     schema.mappings = {} unless schema.mappings
-    schema.filters = {} unless schema.filters
 
     @schemas[kind] = schema
     @
@@ -41,17 +40,15 @@ module.exports = class ApiFacadeClient
   Returns the mapping for a schema. Looks for options.scopes
   ###
   mappingsFromSchema: (schema,options = {}) =>
-    console.log "OPTIONS: #{JSON.stringify(options)}"
     return {} unless schema
     mappings = schema.mappings || {}
-    filterScopes = schema.filters?.scopes || {}
+    filterScopes = schema.scopes || {}
     return mappings unless filterScopes && _.keys(filterScopes).length > 0
 
-    console.log "FILTERSCOPES #{JSON.stringify(filterScopes)}"
     finalFields = {}
-    for filterKey,filterValue of filterScopes
-      if _.contains(options.scopes,filterKey)
-        _.extend( finalFields, filterValue.fields || {})
+    for scopeKey,filterValue of filterScopes
+      if _.contains(options.scopes,scopeKey)
+        finalFields[scope] = true for scope in (filterValue.fields || {})
 
     resultMappings = {}
     for key,v of mappings when finalFields[key]
@@ -156,7 +153,7 @@ module.exports = class ApiFacadeClient
     #throw new Error("Could not resolve schema '#{kind}' with options '#{JSON.stringify(options)}'") unless schema
 
     result = {}
-    @_handleSingleMapping(objKey,target ,obj,result,resolver,options) for objKey,target of @mappingsFromSchema(schema)
+    @_handleSingleMapping(objKey,target ,obj,result,resolver,options) for objKey,target of @mappingsFromSchema(schema,options)
 
     result
 
