@@ -28,34 +28,35 @@ module.exports = class Resolver
 
 
   resolve: (resolverMap, rootObject,options = {},client, cb = ->) =>
-    console.log "OOO #{JSON.stringify(options)}"
     functions = []
 
-    console.log "I NEED RESOLVE:"
     for kind,collection of @matrix
       resolver = resolverMap[kind]
       objectIds = _.keys(collection)
       if resolver && _.isArray(objectIds) && objectIds.length > 0
         functions.push (cb) => resolver.resolve kind,objectIds,options,cb
 
+      ###
       console.log "Collection: #{kind}"
       for id in _.keys(collection)
         console.log "ID: #{id}"
-    console.log "==============="
+      ###
 
     if functions.length > 0
       async.parallel functions, (err,results) =>
+        ###
         console.log "==========++++========="
         console.log "GOT RESULTS"
-
+        ###
         for r in (results || [])
           r.items = r.items || []
           keys = _.keys(r.items)
           keys = _.filter keys, (x) => @embedMe[x]
 
+          ###
           console.log JSON.stringify(r)
           console.log "-------"
-
+          ###
           if keys.length > 0 #We only add this if we have keys to embed.
             rootObject._embedded = {} unless rootObject._embedded
             rootObject._embedded[r.collectionName] = {} unless rootObject._embedded[r.collectionName]

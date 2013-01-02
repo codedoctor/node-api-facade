@@ -67,8 +67,8 @@ further details.
 
 ## Todo
 
-* embed test
-* embed + resolve test
+* fix bug
+* add array test case
 * Invert name <> target
-* t12 should work without resolve = true
+* publish to npm
 * Handle Url + Link case

@@ -59,14 +59,24 @@ module.exports = class ApiFacadeClient
 
     resultMappings
 
+  ###
+  Not used right now - kept only to not break stuff - sorry.
+  ###
   _isCollectionTypeList: (collectionType = '') =>
     collectionType.toLowerCase() is 'list'
 
+  ###
+  Determines if a collection type is of type 'array'
+  ###
   _isCollectionTypeArray: (collectionType = '') =>
     collectionType.toLowerCase() is 'array'
 
+  ###
+  Determines if a collectiontype is of type 'list' or 'array'
+  ###
   _isCollectionTypeListOrArray: (collectionType) =>
     @_isCollectionTypeList(collectionType) || @_isCollectionTypeArray(collectionType)
+
 
   _handleSingleMapping: (sourceKey,mappingTarget,source,result,resolver,options = {}) =>
       if _.isString(mappingTarget)
@@ -152,7 +162,6 @@ module.exports = class ApiFacadeClient
   Please note that resolver can be null
   ###
   mapObjectSync: (kind,obj,options = {},resolver) =>
-    console.log "KIND #{kind} #{JSON.stringify(options)}"
     throw new errors.UnprocessableEntity('kind') unless kind
     return null unless obj
 
@@ -166,7 +175,6 @@ module.exports = class ApiFacadeClient
     result
 
   mapRootCollection: (kind,pagedResult = {},options={},cb) =>
-    console.log "MAP ROOT COLLECTION: #{JSON.stringify(options)}"
     throw new errors.UnprocessableEntity('cb') unless cb # Errors are NOT runtime errors
     throw new errors.UnprocessableEntity('kind') unless kind
     throw new errors.UnprocessableEntity('pagedResult') unless pagedResult
@@ -184,7 +192,6 @@ module.exports = class ApiFacadeClient
       cb null, result
 
   mapRoot: (kind,item = {},options={},cb) =>
-    console.log "MAP ROOT: #{JSON.stringify(options)}"
     throw new errors.UnprocessableEntity('cb') unless cb # Errors are NOT runtime errors
     throw new errors.UnprocessableEntity('kind') unless kind
     throw new errors.UnprocessableEntity('item') unless item
