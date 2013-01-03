@@ -32,6 +32,8 @@ Resonable documentation will be written when I have a bit more time.
 
 ## Release Notes
 
+### 0.2.1
+* Added support for default scope if none is present. E.g. define a default scope, which is used if options.scopes is null or contains nothing.
 ### 0.2.0
 * First version
 
@@ -45,8 +47,8 @@ Resonable documentation will be written when I have a bit more time.
 
 * Change version in package.json
 git add . -A
-git commit -m "Upgrading to v0.2.0"
-git tag -a v0.2.0 -m 'version 0.2.0'
+git commit -m "Upgrading to v0.2.1"
+git tag -a v0.2.1 -m 'version 0.2.1'
 git push --tags
 npm publish
 

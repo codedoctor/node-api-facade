@@ -45,11 +45,14 @@ module.exports = class ApiFacadeClient
     filterScopes = schema.scopes || {}
     return mappings unless filterScopes && _.keys(filterScopes).length > 0
 
+    scopes = options.scopes
+    scopes = ['default'] if !scopes || (_.isArray(scopes) and scopes.length is 0)
+
     finalFields = {}
-    for scopeKey,scopeValue of filterScopes when _.contains(options.scopes,scopeKey) && scopeValue.mode isnt 'restrict'
+    for scopeKey,scopeValue of filterScopes when _.contains(scopes,scopeKey) && scopeValue.mode isnt 'restrict'
       finalFields[scope] = true for scope in (scopeValue.fields || {})
 
-    for scopeKey,scopeValue of filterScopes when _.contains(options.scopes,scopeKey) &&  scopeValue.mode is 'restrict'
+    for scopeKey,scopeValue of filterScopes when _.contains(scopes,scopeKey) &&  scopeValue.mode is 'restrict'
       for k of finalFields
         delete finalFields[k] if not _.contains( scopeValue.fields,k)
 
