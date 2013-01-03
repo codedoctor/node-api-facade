@@ -1,11 +1,11 @@
 should = require 'should'
 
 modelData = ->
-  v1 : 'hello'
-  v2 : 'hello2'
-  v3 : 'hello3'
-  v4 : 'hello4'
-  v5 : 'hello5'
+  v1x : 'hello'
+  v2x : 'hello2'
+  v3x : 'hello3'
+  v4x : 'hello4'
+  v5x : 'hello5'
 
 
 describe 'WHEN working with scopes', ->
@@ -13,30 +13,30 @@ describe 'WHEN working with scopes', ->
   apiFacade = index.client()
   apiFacade.addSchema "NoScopes", 
     mappings:
-      v1: 'v1'
-      v2: 'v2'
-      v3: 'v3'
-      v4: 'v4'
-      v5: 'v5'
+      v1: 'v1x'
+      v2: 'v2x'
+      v3: 'v3x'
+      v4: 'v4x'
+      v5: 'v5x'
 
   apiFacade.addSchema "WithScopes", 
     mappings:
-      v1: 'v1'
-      v2: 'v2'
-      v3: 'v3'
-      v4: 'v4'
-      v5: 'v5'
+      v1: 'v1x'
+      v2: 'v2x'
+      v3: 'v3x'
+      v4: 'v4x'
+      v5: 'v5x'
     scopes:
       scopea: 
         fields: ['v1','v2','v3']
 
   apiFacade.addSchema "WithTwoScopes", 
     mappings:
-      v1: 'v1'
-      v2: 'v2'
-      v3: 'v3'
-      v4: 'v4'
-      v5: 'v5'
+      v1: 'v1x'
+      v2: 'v2x'
+      v3: 'v3x'
+      v4: 'v4x'
+      v5: 'v5x'
     scopes:
       scopea: 
         fields: ['v1','v2','v3']
@@ -45,11 +45,11 @@ describe 'WHEN working with scopes', ->
 
   apiFacade.addSchema "WithRestrictScopes", 
     mappings:
-      v1: 'v1'
-      v2: 'v2'
-      v3: 'v3'
-      v4: 'v4'
-      v5: 'v5'
+      v1: 'v1x'
+      v2: 'v2x'
+      v3: 'v3x'
+      v4: 'v4x'
+      v5: 'v5x'
     scopes:
       scopea: 
         fields: ['v1','v2','v3']
