@@ -67,7 +67,6 @@ further details.
 
 ## Todo
 
-* add array test case
 * Invert name <> target
 * publish to npm
 * Handle Url + Link case
