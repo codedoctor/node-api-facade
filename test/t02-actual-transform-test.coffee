@@ -12,13 +12,13 @@ describe 'WHEN working with simple model and a more complex schema', ->
   apiFacade = index.client()
   apiFacade.addSchema "SimpleModel", 
     mappings:
-      v1: 'v1a'
-      v2: 
-        name: 'v2a'
-      v3: 'v3a'
-      v4: 'v4a'
-      v5: 
-        name: 'v5a'
+      v1a: 'v1'
+      v2a: 
+        name: 'v2'
+      v3a: 'v3'
+      v4a: 'v4'
+      v5a: 
+        name: 'v5'
         default: 'frank'
 
   it 'IT should transform values unchanged', (done) ->

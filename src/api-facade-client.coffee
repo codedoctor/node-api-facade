@@ -78,13 +78,11 @@ module.exports = class ApiFacadeClient
     @_isCollectionTypeList(collectionType) || @_isCollectionTypeArray(collectionType)
 
 
-  _handleSingleMapping: (sourceKey,mappingTarget,source,result,resolver,options = {}) =>
+  _handleSingleMapping: (targetKey,mappingTarget,source,result,resolver,options = {}) =>
       if _.isString(mappingTarget)
-        result[mappingTarget] = source[sourceKey]
+        result[targetKey] = source[mappingTarget]
       else if _.isObject(mappingTarget)
-        name = mappingTarget.name || sourceKey
-
-        v = source[sourceKey]
+        v = source[mappingTarget.name]
 
         if v
           if mappingTarget.type
@@ -163,9 +161,7 @@ module.exports = class ApiFacadeClient
           if @_isCollectionTypeListOrArray(mappingTarget.collectionType) 
             v = []
 
-        result[name] = v
-      else if _.isArray(mappingTarget)
-        @_handleSingleMapping(sourceKey,mt,source,result,null,options) for mt in mappingTarget
+        result[targetKey] = v
 
   ###
   Maps an object, whose type is specified by kind, to a REST representation

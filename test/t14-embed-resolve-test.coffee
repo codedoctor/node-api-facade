@@ -32,8 +32,8 @@ describe 'WHEN resolving stuff', ->
   apiFacade = index.client()
   apiFacade.addSchema "TypeA", 
     mappings:
-      targetId: 
-        name : 'target'
+      target: 
+        name : 'targetId'
         type: 'User'
         embed : true
         resolve: true

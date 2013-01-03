@@ -21,18 +21,18 @@ describe 'WHEN working with types', ->
   apiFacade = index.client()
   apiFacade.addSchema "TypeA", 
     mappings:
-      v1: 
-        name: 'v1a'
+      v1a: 
+        name: 'v1'
         type: 'TypeB'
-      v2: 
-        name: 'v2a'
+      v2a: 
+        name: 'v2'
         type: 'TypeB'
         collectionType: 'Array'
 
   apiFacade.addSchema "TypeB", 
     mappings:
-      b1: 
-        name: 'b1a'
+      b1a: 
+        name: 'b1'
 
   it 'IT should transform values', (done) ->
     apiFacade.mapRoot 'TypeA', modelNoData(), {}, (err,jsonObj) ->

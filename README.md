@@ -66,7 +66,5 @@ Copyright (c) 2013 Martin Wawrusch See LICENSE for
 further details.
 
 ## Todo
-
-* Invert name <> target
 * publish to npm
 * Handle Url + Link case

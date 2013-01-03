@@ -11,8 +11,8 @@ describe 'WHEN working with an array', ->
   apiFacade = index.client()
   apiFacade.addSchema "TypeA", 
     mappings:
-      v1: 
-        name: 'v1a'
+      v1a: 
+        name: 'v1'
         collectionType: 'Array'
 
 
