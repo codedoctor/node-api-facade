@@ -23,7 +23,7 @@ module.exports = class ResolverUsers
         id: "id001"
         username: 'martin'
         password: 'secret'
-        email: 'hello@world.com'
+        emaila: 'hello@world.com' # Important: Name is emaila to test mapping and scope
     cb null,result
 
 
@@ -44,7 +44,7 @@ describe 'WHEN resolving stuff', ->
       id : 'id'
       username: 'username'
       password: 'password'
-      email: 'email' 
+      email: 'emaila' 
     scopes:
       inline:
         fields: ['id','username']
@@ -62,12 +62,12 @@ describe 'WHEN resolving stuff', ->
       jsonObj.should.have.property 'targets'
       jsonObj.targets.should.have.lengthOf 2
 
-      jsonObj.targets[0].should.have.property 'id'
-      jsonObj.targets[0].should.have.property 'username'
+      jsonObj.targets[0].should.have.property 'id','id001'
+      jsonObj.targets[0].should.have.property 'username','martin'
       jsonObj.targets[0].should.not.have.property 'password'
       jsonObj.targets[0].should.not.have.property 'email'
 
-      jsonObj.targets[1].should.have.property 'id'
+      jsonObj.targets[1].should.have.property 'id','id002'
       jsonObj.targets[1].should.not.have.property 'username'
       jsonObj.targets[1].should.not.have.property 'password'
       jsonObj.targets[1].should.not.have.property 'email'
@@ -75,10 +75,10 @@ describe 'WHEN resolving stuff', ->
       jsonObj.should.have.property '_embedded'
       jsonObj._embedded.should.have.property 'users'
       jsonObj._embedded.users.should.have.property 'id001'
-      jsonObj._embedded.users.id001.should.have.property 'id'
-      jsonObj._embedded.users.id001.should.have.property 'username'
+      jsonObj._embedded.users.id001.should.have.property 'id','id001'
+      jsonObj._embedded.users.id001.should.have.property 'username','martin'
       jsonObj._embedded.users.id001.should.not.have.property 'password'
-      jsonObj._embedded.users.id001.should.have.property 'email'
+      jsonObj._embedded.users.id001.should.have.property 'email','hello@world.com'
       done null
 
 
