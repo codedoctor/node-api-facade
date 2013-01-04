@@ -80,12 +80,19 @@ module.exports = class ApiFacadeClient
   _isCollectionTypeListOrArray: (collectionType) =>
     @_isCollectionTypeList(collectionType) || @_isCollectionTypeArray(collectionType)
 
+  _invokeFnMapping: (fn,source,options = {}) =>
+    fn(source,options)
 
   _handleSingleMapping: (targetKey,mappingTarget,source,result,resolver,options = {}) =>
       if _.isString(mappingTarget)
         result[targetKey] = source[mappingTarget]
       else if _.isObject(mappingTarget)
         v = source[mappingTarget.name]
+
+        if mappingTarget.fn && _.isFunction(mappingTarget.fn)
+          result[targetKey] = @_invokeFnMapping(mappingTarget.fn,source,options)
+          return
+
 
         if v
           if mappingTarget.type

@@ -31,6 +31,15 @@ where apiFacade is the instantiated apiFacade object (which contains all the sch
 Resonable documentation will be written when I have a bit more time.
 
 ## Release Notes
+### 0.2.2
+* Added support for fn mapping. No docs or tests yet, but works like this:
+
+```coffeescript
+    mappings:
+      url: 
+        fn: (self,options) -> "#{options.baseUrl}/products/#{self._id}"
+```
+Using self for clarity. Thought it might be easier then mapping this.
 
 ### 0.2.1
 * Added support for default scope if none is present. E.g. define a default scope, which is used if options.scopes is null or contains nothing.
@@ -47,8 +56,8 @@ Resonable documentation will be written when I have a bit more time.
 
 * Change version in package.json
 git add . -A
-git commit -m "Upgrading to v0.2.1"
-git tag -a v0.2.1 -m 'version 0.2.1'
+git commit -m "Upgrading to v0.2.2"
+git tag -a v0.2.2 -m 'version 0.2.2'
 git push --tags
 npm publish
 
