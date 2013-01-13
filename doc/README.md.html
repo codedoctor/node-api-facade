@@ -25,6 +25,7 @@
     </nav>
     <div id='search'>
       <a id='class_list_link' href='class_list.html'>Classes</a>
+      <a id='file_list_link' href='file_list.html'>Files</a>
       <a id='method_list_link' href='method_list.html'>Methods</a>
       <a id='extra_list_link' href='extra_list.html'>Extras</a>
     </div>
@@ -125,8 +126,16 @@
 <li>Supports scopes</li>
 </ul>
 <h3>More</h3><p>Resonable documentation will be written when I have a bit more time.</p><h2>Release Notes</h2>
-<h3>0.2.0</h3>
+<h3>0.2.2</h3>
 <ul>
+<li>Added support for fn mapping. No docs or tests yet, but works like this:</li>
+</ul>
+<pre><code class="lang-coffeescript">    mappings:
+      url: 
+        fn: (self,options) -&gt; &quot;#{options.baseUrl}/products/#{self._id}&quot;</code></pre><p>Using self for clarity. Thought it might be easier then mapping this.</p><h3>0.2.1</h3>
+<ul>
+<li>Added support for default scope if none is present. E.g. define a default scope, which is used if options.scopes is null or contains nothing.<h3>0.2.0</h3>
+</li>
 <li>First version</li>
 </ul>
 <h2>Internal Stuff</h2>
@@ -137,8 +146,8 @@
 <ul>
 <li>Change version in package.json
 git add . -A
-git commit -m &quot;Upgrading to v0.2.0&quot;
-git tag -a v0.2.0 -m &#39;version 0.2.0&#39;
+git commit -m &quot;Upgrading to v0.2.2&quot;
+git tag -a v0.2.2 -m &#39;version 0.2.2&#39;
 git push --tags
 npm publish</li>
 </ul>
@@ -153,12 +162,17 @@ npm publish</li>
 <li>Please try not to mess with the package.json, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.</li>
 </ul>
 <h2>Copyright</h2><p>Copyright (c) 2013 Martin Wawrusch See LICENSE for
-further details.</p>
+further details.</p><h2>Todo</h2>
+<ul>
+<li>publish to npm</li>
+<li>Handle Url + Link case</li>
+</ul>
+
       </div>
     </div>
     <div id='footer'>
   Generated on
-  Wed Jan 02 2013 10:45:20 GMT-0800 (PST)
+  Sat Jan 12 2013 17:04:42 GMT-0800 (PST)
   by
   <a href='https://github.com/netzpirat/codo' title='CoffeeScript API documentation generator'>Codo</a>
   v1.5.4

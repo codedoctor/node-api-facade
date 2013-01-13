@@ -56,7 +56,6 @@ describe 'WHEN resolving stuff', ->
 
   it 'IT should transform values', (done) ->
     apiFacade.mapRoot 'TypeA', model(), scopes: ['scopea'], (err,jsonObj) ->
-      console.log "I GOT: #{JSON.stringify(jsonObj)}"
       should.not.exist err
       should.exist jsonObj
       jsonObj.should.have.property 'targetId'

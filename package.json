@@ -2,7 +2,7 @@
   "author": "Martin Wawrusch <martin@wawrusch.com> (http://martinatsunset.com)",
   "name": "api-facade",
   "description": "A library that simplifies the exposure of data through REST interfaces in a secure, scope dependent way. Basically transforms internal data into whatever a client of your API has the right to see.",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "main" : "lib/index.js",
   "repository": {
     "type": "git",

@@ -2,6 +2,13 @@ _ = require 'underscore'
 errors = require 'some-errors'
 Resolver = require './resolver'
 
+###
+Necessary to bypass nastynesses from libs like mongoose
+###
+convertToObject = (item) ->
+  return item.toObject() if item.toObject && _.isFunction(item.toObject)
+  item
+
 module.exports = class ApiFacadeClient
   constructor: (@settings = {}) ->
     _.defaults @settings, {}
@@ -191,6 +198,7 @@ module.exports = class ApiFacadeClient
 
     result
 
+
   mapRootCollection: (kind,pagedResult = {},options={},cb) =>
     throw new errors.UnprocessableEntity('cb') unless cb # Errors are NOT runtime errors
     throw new errors.UnprocessableEntity('kind') unless kind
@@ -198,11 +206,13 @@ module.exports = class ApiFacadeClient
 
     resolver = new Resolver()
 
+
+
     result =
       totalCount : pagedResult.totalCount || 0
       requestOffset : pagedResult.requestOffset  || 0
       requestCount : pagedResult.requestCount || 0
-      items : _.map( pagedResult.items || [], (x) => @mapObjectSync(kind,x,options,resolver) )
+      items : _.map( pagedResult.items || [], (x) => @mapObjectSync(kind,convertToObject(x),options,resolver) )
     result
 
     resolver.resolve @resolvers,result,options,@,(err) =>
@@ -213,9 +223,43 @@ module.exports = class ApiFacadeClient
     throw new errors.UnprocessableEntity('kind') unless kind
     throw new errors.UnprocessableEntity('item') unless item
 
+    item = convertToObject(item)
+
     resolver = new Resolver()
 
     result = @mapObjectSync(kind,item,options,resolver)
 
     resolver.resolve @resolvers,result,options,@,(err) =>
       cb null, result
+
+  ###
+  Additional resolve invocation to support 2nd phase resolving.
+  @example
+  ```coffeescript
+        ...jsonObj....
+        styleEventCreators = []
+
+        for activity in jsonObj.items
+          if activity.object && activity.object.createdBy
+            styleEventCreators.push(activity.object.createdBy) 
+
+        @apiFacade.resolve 'User',styleEventCreators,'actorId', (err) =>
+  ```
+  ###
+  resolve: (kind,items = [],idField = '_id',cb) =>
+    resolver = new Resolver()
+
+    for item in items
+      resolver.add kind,item[idField], item,false
+
+    result =
+      totalCount : items.length
+      requestOffset : 0
+      requestCount : 99999999
+      items : items
+
+
+
+    resolver.resolve @resolvers,result,{},@,(err) =>
+      cb null, result
+

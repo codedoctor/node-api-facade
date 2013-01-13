@@ -58,7 +58,6 @@ describe 'WHEN resolving stuff', ->
     apiFacade.mapRoot 'TypeA', model(), {}, (err,jsonObj) ->
       should.not.exist err
       should.exist jsonObj
-      console.log "I GOT: #{JSON.stringify(jsonObj)}"
       jsonObj.should.not.have.property 'targetIds'
       jsonObj.should.have.property 'targets'
       jsonObj.targets.should.have.lengthOf 1
@@ -73,7 +72,6 @@ describe 'WHEN resolving stuff', ->
     apiFacade.mapRoot 'TypeA', model2(), {}, (err,jsonObj) ->
       should.not.exist err
       should.exist jsonObj
-      console.log "I GOT: #{JSON.stringify(jsonObj)}"
       jsonObj.should.not.have.property 'targetIds'
       jsonObj.should.have.property 'targets'
       jsonObj.targets.should.have.lengthOf 2

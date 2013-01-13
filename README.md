@@ -31,6 +31,10 @@ where apiFacade is the instantiated apiFacade object (which contains all the sch
 Resonable documentation will be written when I have a bit more time.
 
 ## Release Notes
+
+### 0.2.3
+* Fixed some nasty bugs when using it with mongoose. The gist is: We store keys to resolve as string now, and if an object has a toObject function, we invoke that. Otherwise libs that override toJSON mess with our resolve.
+* Exposed resolve at the top level to support 2 phase resolve.
 ### 0.2.2
 * Added support for fn mapping. No docs or tests yet, but works like this:
 
@@ -56,8 +60,8 @@ Using self for clarity. Thought it might be easier then mapping this.
 
 * Change version in package.json
 git add . -A
-git commit -m "Upgrading to v0.2.2"
-git tag -a v0.2.2 -m 'version 0.2.2'
+git commit -m "Upgrading to v0.2.3"
+git tag -a v0.2.3 -m 'version 0.2.3'
 git push --tags
 npm publish
 
